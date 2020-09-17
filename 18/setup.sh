@@ -10,9 +10,9 @@ export DEBIAN_FRONTEND=noninteractive
 
 # The default sources list minus backports, restricted and multiverse.
 cat >/etc/apt/sources.list <<EOF
-deb http://mirrors.aliyun.com/ubuntu bionic main universe
-deb http://mirrors.aliyun.com/ubuntu bionic-security main universe
-deb http://mirrors.aliyun.com/ubuntu bionic-updates main universe
+deb http://mirrors.aliyun.com/ubuntu/ bionic main universe
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main universe
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main universe
 EOF
 
 apt-get update
@@ -133,6 +133,7 @@ apt-get install -y --no-install-recommends \
     less \
     libargon2-0 \
     libc-client2007e \
+    libc6-dev \
     libcairo2 \
     libcroco3 \
     libcurl4 \
