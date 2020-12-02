@@ -8,12 +8,6 @@ set -x
 
 export DEBIAN_FRONTEND=noninteractive
 
-# The default sources list minus backports, restricted and multiverse.
-cat >/etc/apt/sources.list <<EOF
-deb http://mirrors.aliyun.com/ubuntu/ focal main universe
-deb http://mirrors.aliyun.com/ubuntu/ focal-security main universe
-deb http://mirrors.aliyun.com/ubuntu/ focal-updates main universe
-EOF
 
 apt-get update
 
@@ -195,7 +189,6 @@ apt-get install -y --no-install-recommends \
     shared-mime-info \
     socat \
     stunnel \
-    syslinux \
     tar \
     telnet \
     tzdata \
