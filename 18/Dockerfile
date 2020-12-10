@@ -1,4 +1,7 @@
 FROM ubuntu:18.04
 COPY setup.sh /tmp/setup.sh
-RUN chmod +x /tmp/setup.sh \
+COPY mirrors.sh /tmp/mirrors.sh
+RUN chmod +x /tmp/mirrors.sh \
+  && /tmp/mirrors.sh \
+  && chmod +x /tmp/setup.sh \
   && /tmp/setup.sh
