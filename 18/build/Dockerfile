@@ -1,4 +1,4 @@
-FROM drycc/stack-images:18
+FROM docker.io/drycc/stack-images:18
 COPY setup.sh /tmp/setup.sh
 RUN chmod +x /tmp/setup.sh \
   && /tmp/setup.sh

@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM docker.io/library/ubuntu:18.04
 COPY setup.sh /tmp/setup.sh
 COPY mirrors.sh /tmp/mirrors.sh
 RUN chmod +x /tmp/mirrors.sh \
