@@ -5,8 +5,8 @@ set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 PLATFORM=${PLATFORM:-"linux/amd64,linux/arm64"}
-RUNTIME_IMAGE="${DRYCC_REGISTRY}drycc/stack-images:${VERSION}"
-BUILD_IMAGE="${DRYCC_REGISTRY}drycc/stack-images:${VERSION}-build"
+RUNTIME_IMAGE="${DRYCC_REGISTRY}/drycc/stack-images:${VERSION}"
+BUILD_IMAGE="${DRYCC_REGISTRY}/drycc/stack-images:${VERSION}-build"
 
 
 function build() {
