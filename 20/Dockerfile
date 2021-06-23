@@ -1,7 +1,6 @@
 FROM docker.io/library/ubuntu:20.04
-COPY setup.sh /tmp/setup.sh
-COPY mirrors.sh /tmp/mirrors.sh
-RUN chmod +x /tmp/mirrors.sh \
-  && /tmp/mirrors.sh \
-  && chmod +x /tmp/setup.sh \
-  && /tmp/setup.sh
+COPY *.sh /usr/bin/
+RUN chmod +x /usr/bin/*.sh \
+  && mirrors.sh \
+  && extensions.sh \
+  && setup.sh

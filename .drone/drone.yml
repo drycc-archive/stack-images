@@ -8,11 +8,9 @@ platform:
 
 steps:
 - name: publish
-  image: docker.io/library/docker:dind
+  image: docker.io/drycc/go-dev
   privileged: true
   commands:
-  - nohup dockerd &
-  - apk add make bash curl
   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
   - STACK=18 VERSION=18-linux-amd64 ./build.sh build
   - STACK=20 VERSION=20-linux-amd64 ./build.sh build
@@ -39,11 +37,9 @@ platform:
 
 steps:
 - name: publish
-  image: docker.io/library/docker:dind
+  image: docker.io/drycc/go-dev
   privileged: true
   commands:
-  - nohup dockerd &
-  - apk add make bash curl
   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
   - STACK=18 VERSION=18-linux-arm64 ./build.sh build
   - STACK=20 VERSION=20-linux-arm64 ./build.sh build

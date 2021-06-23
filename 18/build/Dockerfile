@@ -1,5 +1,6 @@
 ARG VERSION
 FROM docker.io/drycc/stack-images:${VERSION}
-COPY setup.sh /tmp/setup.sh
-RUN chmod +x /tmp/setup.sh \
-  && /tmp/setup.sh
+COPY *.sh /usr/bin/
+RUN chmod +x /usr/bin/*.sh \
+  && extensions.sh \
+  && setup.sh
