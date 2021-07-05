@@ -10,8 +10,8 @@ export DEBIAN_FRONTEND=noninteractive
 
 # Install packages
 apt-get update -qq
-apt-cache rdepends --installed libjson-perl
 apt-get install -y --no-install-recommends \
+    nginx \
     binutils \
     gdal-bin \
     libsqlite3-0
