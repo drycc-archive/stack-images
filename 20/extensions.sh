@@ -8,6 +8,9 @@ set -x
 
 export DEBIAN_FRONTEND=noninteractive
 
+# Fix libffi version
+ln -s /usr/lib/$(uname -m)-linux-gnu/libffi.so.7 /usr/lib/$(uname -m)-linux-gnu/libffi.so.6
+
 # Install packages
 apt-get update -qq
 apt-get install -y --no-install-recommends \
