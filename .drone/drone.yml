@@ -12,7 +12,6 @@ steps:
   privileged: true
   commands:
   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
-  - VERSION=18 IMAGE_TAG=18-linux-amd64 ./build.sh build
   - VERSION=20 IMAGE_TAG=20-linux-amd64 ./build.sh build
   environment:
     DRYCC_REGISTRY:
@@ -41,7 +40,6 @@ steps:
   privileged: true
   commands:
   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
-  - VERSION=18 IMAGE_TAG=18-linux-arm64 ./build.sh build
   - VERSION=20 IMAGE_TAG=20-linux-arm64 ./build.sh build
   environment:
     DRYCC_REGISTRY:
@@ -64,28 +62,10 @@ steps:
 - name: manifest
   image: docker.io/library/alpine
   commands:
-  - sed -i "s/docker.io/$${DRYCC_REGISTRY}/g" .drone/manifest-18.tmpl
   - sed -i "s/docker.io/$${DRYCC_REGISTRY}/g" .drone/manifest-20.tmpl
   environment:
     DRYCC_REGISTRY:
       from_secret: drycc_registry
-
-- name: publish-18
-  image: plugins/manifest
-  settings:
-    spec: .drone/manifest-18.tmpl
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: docker_password
-  environment:
-    DEV_REGISTRY:
-      from_secret: dev_registry
-
-  when:
-    event:
-    - push
-    - tag
 
 - name: publish-20
   image: plugins/manifest
