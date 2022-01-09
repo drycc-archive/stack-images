@@ -1,5 +1,5 @@
 kind: pipeline
-type: docker
+type: exec
 name: linux-amd64
 
 platform:
@@ -8,8 +8,6 @@ platform:
 
 steps:
 - name: publish
-  image: docker.io/drycc/go-dev
-  privileged: true
   commands:
   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
   - VERSION=20 IMAGE_TAG=20-linux-amd64 ./build.sh build
@@ -27,7 +25,7 @@ steps:
 
 ---
 kind: pipeline
-type: docker
+type: exec
 name: linux-arm64
 
 platform:
@@ -36,8 +34,6 @@ platform:
 
 steps:
 - name: publish
-  image: docker.io/drycc/go-dev
-  privileged: true
   commands:
   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
   - VERSION=20 IMAGE_TAG=20-linux-arm64 ./build.sh build
@@ -79,10 +75,10 @@ steps:
     DEV_REGISTRY:
       from_secret: dev_registry
 
-  when:
-    event:
-    - push
-    - tag
+trigger:
+  event:
+  - push
+  - tag
 
 depends_on:
 - linux-amd64
